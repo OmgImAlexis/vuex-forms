@@ -1,19 +1,23 @@
-import Form from "./Form"
-import Errors from "./Errors"
+import Form from './form';
+import Errors from './errors';
+import { VuexText, VuexCheckbox, VuexRadio, VuexSelect } from './components';
+import InputSyncDirective from './input-sync-directive';
 
-import VuexText from './components/VuexText';
-import VuexCheckbox from './components/VuexCheckbox';
-import VuexRadio from './components/VuexRadio';
-import VuexSelect from './components/VuexSelect';
-import InputSyncDirective from './InputSyncDirective';
+let installed = false;
 
 const VuexForms = {
-    install(Vue, options) {
-        Vue.component('vuex-text', VuexText)
-        Vue.component('vuex-checkbox', VuexCheckbox)
-        Vue.component('vuex-radio', VuexRadio)
-        Vue.component('vuex-select', VuexSelect)
-        Vue.directive('input-sync', InputSyncDirective)
+    install(Vue) {
+        if (installed) {
+            return;
+        }
+
+        Vue.component('vuex-text', VuexText);
+        Vue.component('vuex-checkbox', VuexCheckbox);
+        Vue.component('vuex-radio', VuexRadio);
+        Vue.component('vuex-select', VuexSelect);
+        Vue.directive('input-sync', InputSyncDirective);
+
+        installed = true;
     }
 };
 

@@ -1,6 +1,6 @@
-import Errors from "./Errors"
-import {validationMixin} from "vuelidate"
-import validationMessages from "./lang/en/messages.js"
+import { validationMixin } from 'vuelidate'
+import Errors from './errors';
+import validationMessages from './lang/en/messages';
 
 const defaultConfig = {
     vuexAction: false,
@@ -18,12 +18,12 @@ const defaultConfig = {
     touchOnBlur: false,
     touchOnFocus: false,
     inputDebounce: 200,
-}
+};
 
-const VUEX_FORM = 'VUEX'
-const AJAX_FORM = 'AJAX'
+const VUEX_FORM = 'VUEX';
+const AJAX_FORM = 'AJAX';
 
-// thanks Vuelidate for the following
+// @NOTE: Borrowed from `Vuelidate`
 let _cachedVue = null
 function getVue(rootVm) {
     if (_cachedVue) return _cachedVue
@@ -32,7 +32,7 @@ function getVue(rootVm) {
     while (Vue.super) Vue = Vue.super
     _cachedVue = Vue
     return Vue
-}
+};
 
 export default class Form {
     constructor(vm, data, config = {}, apiHandler = null) {

@@ -1,6 +1,6 @@
-import caretPosition from "./caretPosition";
+import caretPosition from './caret-position';
 
-class Masker {
+export default class Masker {
     // control the input's caret position to prevent the caret
     // from being moved to the end of the input when masking
     constructor() {
@@ -95,6 +95,4 @@ class Masker {
 
         return text;
     }
-}
-
-export default Masker;
+};
