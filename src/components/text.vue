@@ -57,6 +57,11 @@ export default {
         beforeMount() {
             this.masker = new Masker()
         },
+        mounted() {
+            if (this.$vnode.data.attrs.value) {
+                this.currentValue = this.$vnode.data.attrs.value;
+            }
+        },
         methods: {
             hasMask() {
                 return this.mask !== false && ['number', 'password'].indexOf(this.type.toLowerCase()) === -1
@@ -104,7 +109,7 @@ export default {
                     event.target.value = this.applySaveMask(value)
                 }
 
-                this.value = value
+                this.currentValue = value
                 this.emitEvent('input', event)
             },
 
