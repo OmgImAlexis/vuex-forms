@@ -1,11 +1,10 @@
-import Form from './form';
-import Errors from './errors';
+import * as Validators from './validators';
 import { VuexText, VuexCheckbox, VuexRadio, VuexSelect } from './components';
 import InputSyncDirective from './input-sync-directive';
 
 let installed = false;
 
-const VuexForms = {
+export const VuexForms = {
     install(Vue) {
         if (installed) {
             return;
@@ -22,9 +21,8 @@ const VuexForms = {
 };
 
 export {
-    VuexForms,
-    Form,
-    Errors
-}
-
+    Validators
+};
 export default VuexForms;
+export { default as Form } from './form';
+export { default as Errors } from './errors';
