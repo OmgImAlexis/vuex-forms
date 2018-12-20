@@ -13,7 +13,9 @@
             @keydown="handleKeyDown"
             @blur="handleBlur"
             @focus="handleFocus"
-            class="form-control"></textarea>
+            :min="min"
+            :max="max"
+            :class="['form-control', customClass]"></textarea>
 
         <input v-if="type !== 'textarea'"
             ref="input"
@@ -28,7 +30,9 @@
             @keydown="handleKeyDown"
             @blur="handleBlur"
             @focus="handleFocus"
-            class="form-control">
+            :class="['form-control', customClass]"
+            :min="min"
+            :max="max">
         <ul class="form-errors" v-if="fieldErrors">
             <li v-for="(error, index) in fieldErrors" :key="index">{{ error }}</li>
         </ul>
@@ -44,6 +48,8 @@ export default {
     name: 'VuexText',
     ...merge.recursive(true, VuexField, {
         props: {
+            min: { type: String },
+            max: { type: String },
             type: {
                 type: String,
                 default: 'text',
