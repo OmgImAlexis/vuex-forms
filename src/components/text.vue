@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group">
+    <component :is="slim ? 'span' : 'div'" class="form-group">
         <label v-if="label" :for="id" v-html="label"></label>
 
         <textarea v-if="type === 'textarea'"
@@ -13,8 +13,6 @@
             @keydown="handleKeyDown"
             @blur="handleBlur"
             @focus="handleFocus"
-            :min="min"
-            :max="max"
             :class="['form-control', customClass]"></textarea>
 
         <input v-if="type !== 'textarea'"
@@ -30,13 +28,11 @@
             @keydown="handleKeyDown"
             @blur="handleBlur"
             @focus="handleFocus"
-            :class="['form-control', customClass]"
-            :min="min"
-            :max="max">
+            :class="['form-control', customClass]">
         <ul class="form-errors" v-if="fieldErrors">
             <li v-for="(error, index) in fieldErrors" :key="index">{{ error }}</li>
         </ul>
-    </div>
+    </component>
 </template>
 
 <script>
@@ -48,8 +44,6 @@ export default {
     name: 'VuexText',
     ...merge.recursive(true, VuexField, {
         props: {
-            min: { type: String },
-            max: { type: String },
             type: {
                 type: String,
                 default: 'text',
@@ -57,6 +51,7 @@ export default {
                     return ['text', 'textarea', 'tel', 'number', 'email', 'password', 'url', 'date'].indexOf(value) !== -1
                 }
             },
+            slim: {type: Boolean, default: false},
             mask: {type: [Boolean, String], default: false},
             saveMask: {type: [Boolean, String], default: false},
         },

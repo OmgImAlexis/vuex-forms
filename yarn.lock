@@ -68,6 +68,11 @@ validate@^4.5.1:
     eivindfjeldstad-dot "0.0.1"
     typecast "0.0.1"
 
+vue-fragment@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vue-fragment/-/vue-fragment-1.5.0.tgz#7739463b7680633f2b671aec9f1bfdd9a436da33"
+  integrity sha512-nobmbbOSOx59fm7U00BDz14Yvqitwx7NPQGYDTKg3+dNDGTDCRNy/q2kfr5hV4S0l4fQG0kvC+rbCmENLmHUSA==
+
 vuelidate@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.5.0.tgz#c315659a023e760d0fb11b6b42b6c3cdf08306c3"
