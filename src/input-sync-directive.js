@@ -42,7 +42,7 @@ export default {
     unbind(_, binding, value) {
         value.child.$off('event')
         value.child.$off('input')
-        binding.value.$bus.$off('reset')
-        binding.value.$bus.$off('validate')
+        binding.currentValue.$bus.$off('reset')
+        binding.currentValue.$bus.$off('validate')
     }
 }
