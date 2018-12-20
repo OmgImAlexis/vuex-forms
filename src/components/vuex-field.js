@@ -7,6 +7,7 @@ export default {
         required: {type: Boolean, default: false},
         disabled: {type: Boolean, default: false},
         errors: {type: [String, Object, Array], default: null},
+        customClass: {type: String, default: ''}
     },
     data: () => ({
         masker: false,
