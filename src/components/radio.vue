@@ -8,7 +8,7 @@
                 :value="option[option_value]"
                 :checked="value === option[option_value]"
                 @change="handleRadio"
-                class="form-control">
+                :class="['form-control', customClass]">
             {{ option[option_name] }}
         </label>
         <ul class="form-errors" v-if="fieldErrors">

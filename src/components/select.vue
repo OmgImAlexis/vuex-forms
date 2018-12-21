@@ -10,7 +10,7 @@
             @change="handleInput"
             @blur="handleBlur"
             @focus="handleFocus"
-            class="form-control">
+            :class="['form-control', customClass]">
             <option v-for="option in options" :key="option.value" :value="option[option_value]" v-text="option[option_name]" :selected="checkSelected(String(option[option_value]))"></option>
         </select>
         <ul class="form-errors" v-if="fieldErrors">
