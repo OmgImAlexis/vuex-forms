@@ -5,13 +5,20 @@ export default {
         let form      = binding.value
         let field     = binding.arg
         let component = value.child
-        // get the nested field path (TODO)
+
+        // Get the nested field path
         if (binding.modifiers) {
             for (let modifier in binding.modifiers) {
                 field += '.' + modifier
             }
         }
-        component.currentValue = form[field];
+
+        const isDotProp = field.indexOf('.') !== -1;
+        const defaultValue = isDotProp ? dotProp.get(form, field) : form[field];
+        const currentValue = isDotProp ? dotProp.get(form, field) : form[field];
+        
+        component.value = defaultValue;
+        component.currentValue = currentValue
         component.localErrors = form.errors.get(field)
 
         component.$on('input', (inputValue) => {
@@ -43,7 +50,7 @@ export default {
     unbind(_, binding, value) {
         value.child.$off('event')
         value.child.$off('input')
-        binding.currentValue.$bus.$off('reset')
-        binding.currentValue.$bus.$off('validate')
+        binding.value.$bus.$off('reset')
+        binding.value.$bus.$off('validate')
     }
 }
