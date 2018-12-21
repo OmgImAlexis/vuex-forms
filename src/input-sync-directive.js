@@ -1,3 +1,5 @@
+import dotProp from 'dot-prop';
+
 export default {
     bind: function (_, binding, value) {
         let form      = binding.value
@@ -13,13 +15,12 @@ export default {
         component.localErrors = form.errors.get(field)
 
         component.$on('input', (inputValue) => {
-            // TODO: nested field handling
+            // Handle nested data
             if (field.indexOf('.') !== -1) {
-                //field.split('.').reduce((o, i) => o[i], form)
-                console.log('still working on nested data for the directive')
-            } else {
-                component.$set(form, field, inputValue)
+                dotProp.set(form, field, inputValue);
             }
+
+            component.$set(form, field, inputValue)
         })
         component.$on('event', (event) => {
             form.listen(event)
