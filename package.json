@@ -10,7 +10,6 @@
   "scripts": {},
   "dependencies": {
     "axios": "^0.18.0",
-    "dot-prop": "^4.2.0",
     "dot-prop-immutable": "^1.5.0",
     "esm": "^3.0.84",
     "merge": "^1.2.1",
