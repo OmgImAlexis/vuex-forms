@@ -38,7 +38,7 @@
 <script>
 import merge from 'merge';
 import VuexField from './vuex-field';
-import Masker from '../helpers/Masker';
+import Masker from '../helpers/masker';
 
 export default {
     name: 'VuexText',
