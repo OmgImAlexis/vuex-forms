@@ -1,25 +1,24 @@
-import dotProp from 'dot-prop';
+import dotProp from 'dot-prop-immutable';
 
 export default {
-    bind: function (_, binding, value) {
-        let form      = binding.value
-        let field     = binding.arg
-        let component = value.child
+    bind: function (_, binding, vnode) {
+        let form      = binding.value;
+        let field     = binding.arg;
+        let component = vnode.child;
 
         // Get the nested field path
         if (binding.modifiers) {
             for (let modifier in binding.modifiers) {
-                field += '.' + modifier
+                field += '.' + modifier;
             }
         }
 
         const isDotProp = field.indexOf('.') !== -1;
         const defaultValue = isDotProp ? dotProp.get(form, field) : form[field];
-        const currentValue = isDotProp ? dotProp.get(form, field) : form[field];
         
         component.value = defaultValue;
-        component.currentValue = currentValue
-        component.localErrors = form.errors.get(field)
+        component.currentValue = defaultValue;
+        component.localErrors = form.errors.get(field);
 
         component.$on('input', (inputValue) => {
             // Handle nested data
@@ -47,9 +46,9 @@ export default {
             }
         })
     },
-    unbind(_, binding, value) {
-        value.child.$off('event')
-        value.child.$off('input')
+    unbind(_, binding, vnode) {
+        vnode.child.$off('event')
+        vnode.child.$off('input')
         binding.value.$bus.$off('reset')
         binding.value.$bus.$off('validate')
     }
