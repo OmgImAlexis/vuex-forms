@@ -1,4 +1,4 @@
-export { default as VuexCheckbox } from './checkbox';
-export { default as VuexRadio } from './radio';
-export { default as VuexSelect } from './select';
-export { default as VuexText } from './text';
+export { default as VuexCheckbox } from './checkbox.vue';
+export { default as VuexRadio } from './radio.vue';
+export { default as VuexSelect } from './select.vue';
+export { default as VuexText } from './text.vue';

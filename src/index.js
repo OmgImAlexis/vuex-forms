@@ -24,5 +24,5 @@ export {
     Validators
 };
 export default VuexForms;
-export { default as Form } from './form';
-export { default as Errors } from './errors';
+export { default as Form } from './form.js';
+export { default as Errors } from './errors.js';
